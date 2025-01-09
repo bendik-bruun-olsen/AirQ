@@ -1,8 +1,8 @@
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer } from "react-leaflet";
-import styles from "./Map.module.css";
+import styles from "./MapComponent.module.css";
 
-export default function Map() {
+export default function MapComponent() {
 	return (
 		<MapContainer
 			center={[48.8566, 2.3522]}

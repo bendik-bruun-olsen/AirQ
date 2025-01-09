@@ -9,6 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MapIcon from "@mui/icons-material/Map";
+import { Link, Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -31,7 +32,7 @@ export default function PermanentDrawerLeft() {
 				<Divider />
 				<List>
 					<ListItem key={"Dashboard"} disablePadding>
-						<ListItemButton>
+						<ListItemButton component={Link} to="/dashboard">
 							<ListItemIcon>
 								<DashboardIcon />
 							</ListItemIcon>
@@ -39,7 +40,7 @@ export default function PermanentDrawerLeft() {
 						</ListItemButton>
 					</ListItem>
 					<ListItem key={"Map"} disablePadding>
-						<ListItemButton>
+						<ListItemButton component={Link} to="/map">
 							<ListItemIcon>
 								<MapIcon />
 							</ListItemIcon>
@@ -53,6 +54,7 @@ export default function PermanentDrawerLeft() {
 				sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
 			>
 				<Toolbar />
+				<Outlet />
 			</Box>
 		</Box>
 	);
