@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+
 import {
 	MapContainer,
 	Marker,
@@ -8,6 +9,7 @@ import {
 	TileLayer,
 	useMapEvents,
 } from "react-leaflet";
+import MapPopup from "./MapPopup/MapPopup";
 
 const apiToken = import.meta.env.VITE_API_TOKEN;
 const apiUrl = "https://api.waqi.info/v2/map/bounds/";
@@ -59,9 +61,7 @@ function FetchMarkers() {
 					})}
 				>
 					<Popup>
-						<strong>{station.station.name}</strong>
-						<br />
-						AQI: {station.aqi}
+						<MapPopup name={station.station.name} aqi={station.aqi} />
 					</Popup>
 				</Marker>
 			))}
