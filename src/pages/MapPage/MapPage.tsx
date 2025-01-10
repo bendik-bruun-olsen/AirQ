@@ -1,9 +1,10 @@
-import MapComponent from "../../components/MapComponent/MapComponent";
+import MapComponent from "../../components/MapComponent";
 
 export default function MapPage() {
 	return (
 		<>
-			<h1>TEST!</h1>
+			<h1>Map</h1>
+			<hr />
 			<MapComponent />
 		</>
 	);

@@ -1,3 +1,11 @@
 export default function DashboardPage() {
-	return <h1>"Hello World"</h1>;
+	const selectedCity = "Stavanger";
+
+	return (
+		<>
+			<h1>Dashboard</h1>
+			<hr />
+			<h2>You've selected: {selectedCity}</h2>
+		</>
+	);
 }

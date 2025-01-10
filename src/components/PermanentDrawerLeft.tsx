@@ -9,11 +9,30 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MapIcon from "@mui/icons-material/Map";
+import InfoIcon from "@mui/icons-material/Info";
 import { Link, Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
 export default function PermanentDrawerLeft() {
+	const menuItems = [
+		{
+			name: "Dashboard",
+			icon: <DashboardIcon />,
+			link: "/dashboard",
+		},
+		{
+			name: "Map",
+			icon: <MapIcon />,
+			link: "/map",
+		},
+		{
+			name: "About",
+			icon: <InfoIcon />,
+			link: "/about",
+		},
+	];
+
 	return (
 		<Box sx={{ display: "flex" }}>
 			<Drawer
@@ -31,22 +50,14 @@ export default function PermanentDrawerLeft() {
 				<Toolbar />
 				<Divider />
 				<List>
-					<ListItem key={"Dashboard"} disablePadding>
-						<ListItemButton component={Link} to="/dashboard">
-							<ListItemIcon>
-								<DashboardIcon />
-							</ListItemIcon>
-							<ListItemText primary={"Dashboard"} />
-						</ListItemButton>
-					</ListItem>
-					<ListItem key={"Map"} disablePadding>
-						<ListItemButton component={Link} to="/map">
-							<ListItemIcon>
-								<MapIcon />
-							</ListItemIcon>
-							<ListItemText primary={"Map"} />
-						</ListItemButton>
-					</ListItem>
+					{menuItems.map((item) => (
+						<ListItem key={item.name} disablePadding>
+							<ListItemButton component={Link} to={item.link}>
+								<ListItemIcon>{item.icon}</ListItemIcon>
+								<ListItemText primary={item.name} />
+							</ListItemButton>
+						</ListItem>
+					))}
 				</List>
 			</Drawer>
 			<Box
