@@ -1,38 +1,18 @@
-import { APIResponse } from "../../interfaces/APIResponse";
 import { LocationContext } from "../../context/ContextProvider";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { capitalizeWords } from "../../utils/helpers";
 import styles from "./DashboardPage.module.css";
 import getAqiStatus from "../../utils/getAqiStatus";
-import { initialData } from "../../constants/initialData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDizzy } from "@fortawesome/free-solid-svg-icons";
+import useFetchData from "../../hooks/useFetchData";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardPage() {
+	const navigate = useNavigate();
 	const { selectedLocation } = useContext(LocationContext);
-	const apiUrl = "http://api.waqi.info/feed/";
-	const apiToken = import.meta.env.VITE_API_TOKEN;
-	const [error, setError] = useState<string | null>(null);
-	const [data, setData] = useState<APIResponse["data"]>(initialData);
+	const { data, isLoading, hasError } = useFetchData(selectedLocation);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await fetch(
-					`${apiUrl}${selectedLocation.name}/?token=${apiToken}`
-				);
-				const result = await response.json();
-				if (result.status !== "ok") throw new Error();
-				console.log("data fetched: ", result.data);
-				setData(result.data);
-			} catch {
-				setError(
-					"Unable to retrieve data for selected location. Please choose another. "
-				);
-			}
-		};
-		fetchData();
-	}, [selectedLocation, apiToken]);
+	if (!data) navigate("/error");
 
 	const { status, backgroundColor, icon } = getAqiStatus(data.aqi);
 
@@ -41,9 +21,9 @@ export default function DashboardPage() {
 			<h1>Dashboard</h1>
 			<hr />
 			<h2>You've selected: {capitalizeWords(selectedLocation.name)}</h2>
-			{error && <h3>{error}</h3>}
+			{hasError && <h3>An error occurred.</h3>}
 			<div className={styles.summaryContainer} style={{ backgroundColor }}>
-				<h2>Air Quality: {data.aqi}</h2>
+				<h2>Air Quality: {data?.aqi}</h2>
 				<p>Status: {status}</p>
 				<FontAwesomeIcon
 					icon={icon}
