@@ -30,7 +30,7 @@ export default function MapPopup({ name, aqi, uid }: Props) {
 			AQI: {aqi}
 			<br />
 			<Button variant="contained" size="small" onClick={handleClick}>
-				Select
+				View
 			</Button>
 		</>
 	);
