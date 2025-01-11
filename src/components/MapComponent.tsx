@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -28,16 +28,15 @@ function FetchMarkers() {
 
 	const map = useMapEvents({
 		moveend: () => {
-			const bounds = map.getBounds();
-			const boundsString = `${bounds.getNorth()},${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()}`;
-			fetchMarkers(boundsString);
+			fetchMarkers(map.getBounds());
 		},
 	});
 
-	const fetchMarkers = async (bounds: string) => {
+	const fetchMarkers = async (bounds: L.LatLngBounds) => {
+		const boundsString = `${bounds.getNorth()},${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()}`;
 		try {
 			const response = await fetch(
-				`${apiUrl}?latlng=${bounds}&token=${apiToken}`
+				`${apiUrl}?latlng=${boundsString}&token=${apiToken}`
 			);
 			const data = await response.json();
 			if (data.status !== "ok") throw new Error(data.data);
@@ -61,7 +60,11 @@ function FetchMarkers() {
 					})}
 				>
 					<Popup>
-						<MapPopup name={station.station.name} aqi={station.aqi} />
+						<MapPopup
+							name={station.station.name}
+							aqi={station.aqi}
+							uid={station.uid}
+						/>
 					</Popup>
 				</Marker>
 			))}
@@ -73,7 +76,7 @@ function FetchMarkers() {
 export default function MapComponent() {
 	return (
 		<MapContainer
-			center={[48.8566, 2.3522]}
+			center={[58.9699756, 5.7331072]}
 			zoom={13}
 			style={{ height: "800px", width: "1200px" }}
 		>

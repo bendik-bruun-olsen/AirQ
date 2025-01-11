@@ -4,7 +4,7 @@ interface Attribution {
 }
 
 interface City {
-	geo: [number, number]; // Tuple for latitude and longitude
+	geo: [number, number];
 	name: string;
 	url: string;
 	location: string;
@@ -40,14 +40,14 @@ interface Forecast {
 }
 
 interface Time {
-	s: string; // Local time string
-	tz: string; // Timezone offset
-	v: number; // Unix timestamp in seconds
-	iso: string; // ISO 8601 date-time string
+	s: string;
+	tz: string;
+	v: number;
+	iso: string;
 }
 
 interface Debug {
-	sync: string; // Synchronization timestamp
+	sync: string;
 }
 
 export interface APIResponse {

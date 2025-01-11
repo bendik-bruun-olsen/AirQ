@@ -4,6 +4,7 @@ import {
 	useState,
 	Dispatch,
 	SetStateAction,
+	useEffect,
 } from "react";
 
 // interface LocationContextType {
@@ -17,12 +18,12 @@ import {
 // });
 
 interface LocationContextType {
-	selectedLocation: string;
-	setSelectedLocation: Dispatch<SetStateAction<string>>;
+	selectedLocation: { name: string; uid: string };
+	setSelectedLocation: Dispatch<SetStateAction<{ name: string; uid: string }>>;
 }
 
 const LocationContext = createContext<LocationContextType>({
-	selectedLocation: "",
+	selectedLocation: { name: "", uid: "" },
 	setSelectedLocation: () => {},
 });
 
@@ -31,9 +32,14 @@ interface Props {
 }
 
 function ContextProvider({ children }: Props) {
-	const initialLocation = "stavanger";
-	const [selectedLocation, setSelectedLocation] =
-		useState<string>(initialLocation);
+	const [selectedLocation, setSelectedLocation] = useState({
+		name: "Kannik, Stavanger, Norway",
+		uid: "2657",
+	});
+
+	useEffect(() => {
+		console.log("(ContextProvider) selectedLocation: ", selectedLocation);
+	}, [selectedLocation]);
 
 	return (
 		<LocationContext.Provider
