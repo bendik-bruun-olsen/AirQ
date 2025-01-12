@@ -5,16 +5,14 @@ import styles from "./DashboardPage.module.css";
 import getAqiStatus from "../../utils/getAqiStatus";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useFetchData from "../../hooks/useFetchData";
-import { useNavigate } from "react-router-dom";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 export default function DashboardPage() {
-	// const navigate = useNavigate();
 	const { selectedLocation } = useContext(LocationContext);
-	const { data, isLoading, hasError } = useFetchData(selectedLocation);
-
-	// if (!data) navigate("/error");
-
+	const { data, isLoading, hasError } = useFetchData(selectedLocation.name);
 	const { status, backgroundColor, icon } = getAqiStatus(data?.aqi ?? 0);
+
+	if (isLoading) return <LoadingPage />;
 
 	return (
 		<>
