@@ -8,3 +8,7 @@
 #root {
 	height: 100vh;
 }
+
+hr {
+	margin-bottom: 10px;
+}
