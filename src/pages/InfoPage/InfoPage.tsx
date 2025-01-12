@@ -8,12 +8,7 @@ import {
 	Table,
 } from "@mui/material";
 import { airQualityIndex } from "../../constants/airQualityIndex";
-
-const textStyle = {
-	color: "white",
-	textShadow: "0px 1px 2px rgba(0, 0, 0, 0.8)",
-	minWidth: "100px",
-};
+import styles from "./InfoPage.module.css";
 
 export default function InfoPage() {
 	return (
@@ -21,13 +16,19 @@ export default function InfoPage() {
 			<h1>Information</h1>
 			<hr />
 			<TableContainer component={Paper}>
-				<Table sx={{ maxWidth: "1200px" }}>
+				<Table sx={{ width: "fit-content" }}>
 					<TableHead sx={{ backgroundColor: "#242625" }}>
 						<TableRow>
-							<TableCell sx={textStyle}>AQI</TableCell>
-							<TableCell sx={textStyle}>Air Pollution Level</TableCell>
-							<TableCell sx={textStyle}>Health Implications</TableCell>
-							<TableCell sx={textStyle}>
+							<TableCell className={`${styles.text} ${styles.box}`}>
+								AQI
+							</TableCell>
+							<TableCell className={`${styles.text} ${styles.box}`}>
+								Air Pollution Level
+							</TableCell>
+							<TableCell className={`${styles.text} ${styles.box}`}>
+								Health Implications
+							</TableCell>
+							<TableCell className={`${styles.text} ${styles.box}`}>
 								Cautionary Statement (for PM2.5)
 							</TableCell>
 						</TableRow>
@@ -38,10 +39,18 @@ export default function InfoPage() {
 								key={item.level}
 								sx={{ backgroundColor: item.backgroundColor }}
 							>
-								<TableCell sx={textStyle}>{item.AQI}</TableCell>
-								<TableCell sx={textStyle}>{item.level}</TableCell>
-								<TableCell sx={textStyle}>{item.healthImplications}</TableCell>
-								<TableCell sx={textStyle}>{item.cautionaryStatement}</TableCell>
+								<TableCell className={`${styles.text} ${styles.box}`}>
+									{item.AQI}
+								</TableCell>
+								<TableCell className={`${styles.text} ${styles.box}`}>
+									{item.level}
+								</TableCell>
+								<TableCell className={`${styles.text} ${styles.box}`}>
+									{item.healthImplications}
+								</TableCell>
+								<TableCell className={`${styles.text} ${styles.box}`}>
+									{item.cautionaryStatement}
+								</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
