@@ -27,9 +27,9 @@ export default function PermanentDrawerLeft() {
 			link: "/map",
 		},
 		{
-			name: "About",
+			name: "Info",
 			icon: <InfoIcon />,
-			link: "/about",
+			link: "/info",
 		},
 	];
 

@@ -2,7 +2,7 @@ import PermanentDrawerLeft from "./components/PermanentDrawerLeft";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import MapPage from "./pages/MapPage/MapPage";
-import AboutPage from "./pages/AboutPage/AboutPage";
+import InfoPage from "./pages/InfoPage/InfoPage";
 import { ContextProvider } from "./context/ContextProvider";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
@@ -14,7 +14,7 @@ export default function App() {
 					<Route path="/" element={<PermanentDrawerLeft />}>
 						<Route index path="dashboard" element={<DashboardPage />} />
 						<Route path="map" element={<MapPage />} />
-						<Route path="about" element={<AboutPage />} />
+						<Route path="info" element={<InfoPage />} />
 						<Route path="error" element={<ErrorPage />} />
 					</Route>
 				</Routes>

@@ -8,13 +8,13 @@ import useFetchData from "../../hooks/useFetchData";
 import { useNavigate } from "react-router-dom";
 
 export default function DashboardPage() {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const { selectedLocation } = useContext(LocationContext);
 	const { data, isLoading, hasError } = useFetchData(selectedLocation);
 
-	if (!data) navigate("/error");
+	// if (!data) navigate("/error");
 
-	const { status, backgroundColor, icon } = getAqiStatus(data.aqi);
+	const { status, backgroundColor, icon } = getAqiStatus(data?.aqi ?? 0);
 
 	return (
 		<>
