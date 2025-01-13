@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { LocationContext } from "../../context/ContextProvider";
 import { useContext } from "react";
 import useFetchData from "../../hooks/useFetchData";
+import styles from "./MapPopup.module.css";
 
 interface Props {
 	name: string;
@@ -12,7 +13,7 @@ interface Props {
 
 export default function MapPopup({ name, aqi, uid }: Props) {
 	const { setSelectedLocation } = useContext(LocationContext);
-	const { data, isLoading, hasError } = useFetchData(name);
+	const { data, isLoading, hasError } = useFetchData(uid);
 
 	const navigate = useNavigate();
 
@@ -27,19 +28,24 @@ export default function MapPopup({ name, aqi, uid }: Props) {
 	const renderButton = () => {
 		if (isLoading) {
 			return (
-				<Button variant="contained" disabled>
+				<Button variant="contained" disabled className={styles.button}>
 					Loading...
 				</Button>
 			);
 		} else if (hasError) {
 			return (
-				<Button variant="contained" disabled>
+				<Button variant="contained" disabled className={styles.button}>
 					No data
 				</Button>
 			);
 		} else if (data) {
 			return (
-				<Button variant="contained" size="small" onClick={handleClick}>
+				<Button
+					variant="contained"
+					size="small"
+					onClick={handleClick}
+					className={styles.button}
+				>
 					View details
 				</Button>
 			);

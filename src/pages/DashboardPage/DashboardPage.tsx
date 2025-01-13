@@ -9,7 +9,7 @@ import LoadingPage from "../LoadingPage/LoadingPage";
 
 export default function DashboardPage() {
 	const { selectedLocation } = useContext(LocationContext);
-	const { data, isLoading, hasError } = useFetchData(selectedLocation.name);
+	const { data, isLoading, hasError } = useFetchData(selectedLocation.uid);
 	const { status, backgroundColor, icon } = getAqiStatus(data?.aqi ?? 0);
 
 	if (isLoading) return <LoadingPage />;

@@ -16,7 +16,9 @@ export default function useFetchData(location: string) {
 
 				setIsLoading(true);
 				setHasError(false);
-				const response = await fetch(`${apiUrl}${location}/?token=${apiToken}`);
+				const response = await fetch(
+					`${apiUrl}@${location}/?token=${apiToken}`
+				);
 				const result = await response.json();
 				if (result.status !== "ok") throw new Error("Failed to fetch data");
 				console.log("Success: ", result.data);
