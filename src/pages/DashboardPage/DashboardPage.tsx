@@ -30,8 +30,8 @@ export default function DashboardPage() {
 				/>
 			</div>
 			<div className={styles.gaugeContainer}>
-				<PMGauge value={data?.iaqi?.pm25?.v} type={"pm25"} />
-				<PMGauge value={data?.iaqi?.pm10?.v} type={"pm10"} />
+				<PMGauge value={data?.iaqi?.pm25?.v ?? 0} type={"pm25"} />
+				<PMGauge value={data?.iaqi?.pm10?.v ?? 0} type={"pm10"} />
 			</div>
 		</>
 	);
