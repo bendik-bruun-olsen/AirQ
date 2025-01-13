@@ -6,8 +6,6 @@ import {
 } from "../../constants/PMRanges";
 import styles from "./PMGauge.module.css";
 
-const RADIAN = Math.PI / 180;
-
 interface Props {
 	value: number;
 	type: string;
@@ -15,14 +13,21 @@ interface Props {
 
 export default function PMGauge({ value, type }: Props) {
 	const data = type === "pm25" ? PM25Ranges : PM10Ranges;
-	const centerX = 150;
-	const centerY = 200;
+	const currentStatusIndex = data.findIndex(
+		(data) => value >= data.minValue && value <= data.maxValue
+	);
+	const centerX = 100;
+	const centerY = 100;
 	const innerRadius = 50;
 	const outerRadius = 100;
 
 	const renderNeedle = (value: number, data: PMRangeInterface[]) => {
 		const needleColor = "#000000";
-		const total = data.reduce((sum, entry) => sum + entry.value, 0);
+		const RADIAN = Math.PI / 180;
+		const total = data.reduce(
+			(sum, entry) => sum + (entry.maxValue - entry.minValue),
+			0
+		);
 		const needleAngle = 180.0 * (1 - value / total);
 		const needleLength = (innerRadius + 2 * outerRadius) / 3;
 		const sin = Math.sin(-RADIAN * needleAngle);
@@ -58,7 +63,11 @@ export default function PMGauge({ value, type }: Props) {
 
 	return (
 		<div className={styles.wrapper}>
-			<PieChart width={300} height={250} className={styles.pieChart}>
+			<PieChart
+				width={centerX * 2 + 10}
+				height={centerY + 10}
+				className={styles.pieChart}
+			>
 				<Pie
 					dataKey="value"
 					startAngle={180}
@@ -77,7 +86,7 @@ export default function PMGauge({ value, type }: Props) {
 				</Pie>
 				{renderNeedle(value, data)}
 			</PieChart>
-			<h3>Hello!</h3>
+			<h3>{`Status: ${data[currentStatusIndex]?.name ?? "Unknown"}`}</h3>
 		</div>
 	);
 }
