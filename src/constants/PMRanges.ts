@@ -1,3 +1,9 @@
+export interface PMRangeInterface {
+	name: string;
+	value: number;
+	color: string;
+}
+
 const PM25Ranges = [
 	{ name: "Good", value: 15.4 - 0, color: "#00e400" },
 	{ name: "Moderate", value: 40.4 - 15.5, color: "#ffff00" },

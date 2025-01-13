@@ -29,8 +29,10 @@ export default function DashboardPage() {
 					style={{ width: "50px", height: "50px" }}
 				/>
 			</div>
-			<PMGauge value={data?.iaqi?.pm25?.v} type={"pm25"} />
-			<PMGauge value={data?.iaqi?.pm10?.v} type={"pm10"} />
+			<div className={styles.gaugeContainer}>
+				<PMGauge value={data?.iaqi?.pm25?.v} type={"pm25"} />
+				<PMGauge value={data?.iaqi?.pm10?.v} type={"pm10"} />
+			</div>
 		</>
 	);
 }

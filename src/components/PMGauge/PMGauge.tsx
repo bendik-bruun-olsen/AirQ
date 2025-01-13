@@ -1,21 +1,26 @@
 import { Cell, Pie, PieChart } from "recharts";
-import { PM10Ranges, PM25Ranges } from "../../constants/PMRanges";
+import {
+	PM10Ranges,
+	PM25Ranges,
+	PMRangeInterface,
+} from "../../constants/PMRanges";
+import styles from "./PMGauge.module.css";
 
 const RADIAN = Math.PI / 180;
 
-export default function PMGauge({ value, type }) {
-	console.log("Value: ", value);
-	console.log("ValueType:", typeof value);
+interface Props {
+	value: number;
+	type: string;
+}
 
-	console.log("Type: ", type);
-
+export default function PMGauge({ value, type }: Props) {
 	const data = type === "pm25" ? PM25Ranges : PM10Ranges;
 	const centerX = 150;
 	const centerY = 200;
 	const innerRadius = 50;
 	const outerRadius = 100;
 
-	const renderNeedle = (value, data) => {
+	const renderNeedle = (value: number, data: PMRangeInterface[]) => {
 		const needleColor = "#000000";
 		const total = data.reduce((sum, entry) => sum + entry.value, 0);
 		const needleAngle = 180.0 * (1 - value / total);
@@ -52,24 +57,27 @@ export default function PMGauge({ value, type }) {
 	};
 
 	return (
-		<PieChart width={300} height={300}>
-			<Pie
-				dataKey="value"
-				startAngle={180}
-				endAngle={0}
-				data={data}
-				cx={centerX}
-				cy={centerY}
-				innerRadius={innerRadius}
-				outerRadius={outerRadius}
-				fill="#8884d8"
-				stroke="none"
-			>
-				{data.map((entry, index) => (
-					<Cell key={`cell-${index}`} fill={entry.color} />
-				))}
-			</Pie>
-			{renderNeedle(value, data)}
-		</PieChart>
+		<div className={styles.wrapper}>
+			<PieChart width={300} height={250} className={styles.pieChart}>
+				<Pie
+					dataKey="value"
+					startAngle={180}
+					endAngle={0}
+					data={data}
+					cx={centerX}
+					cy={centerY}
+					innerRadius={innerRadius}
+					outerRadius={outerRadius}
+					fill="#8884d8"
+					stroke="none"
+				>
+					{data.map((entry, index) => (
+						<Cell key={`cell-${index}`} fill={entry.color} />
+					))}
+				</Pie>
+				{renderNeedle(value, data)}
+			</PieChart>
+			<h3>Hello!</h3>
+		</div>
 	);
 }
