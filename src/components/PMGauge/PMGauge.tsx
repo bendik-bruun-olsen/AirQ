@@ -16,25 +16,33 @@ export default function PMGauge({ value, type }: Props) {
 	const currentRange = data.find(
 		(data) => value >= data.minValue && value <= data.maxValue
 	);
-	const currentRangeIndex = data.findIndex((data) => data === currentRange);
 	const centerX = 100;
 	const centerY = 100;
 	const innerRadius = 50;
 	const outerRadius = 100;
-	const gaugeAngle = 180;
 
 	const renderNeedle = (value: number, data: PMRangeInterface[]) => {
-		const needleColor = "#000000";
-		const RADIAN = Math.PI / gaugeAngle;
+		console.log("Value: ", value);
+
 		if (!currentRange) return null;
-		const totalSegments = data.length;
-		const segmentAngle = gaugeAngle / totalSegments;
-		const baseAngle = segmentAngle * currentRangeIndex;
-		const relativePosition =
+		const currentRangeIndex = data.findIndex((data) => data === currentRange);
+		console.log("currentRangeIndex: ", currentRangeIndex);
+
+		if (currentRangeIndex === -1) return null;
+		const needleColor = "#000000";
+		const RADIAN = Math.PI / 180;
+		const segmentSizeAngle = 180 / data.length;
+		const segmentStartAngle = 180 - currentRangeIndex * segmentSizeAngle;
+		console.log("segmentStartAngle: ", segmentStartAngle);
+		const relativePos =
 			(value - currentRange.minValue) /
 			(currentRange.maxValue - currentRange.minValue);
-		const needleAngle =
-			gaugeAngle * (baseAngle + segmentAngle * relativePosition);
+		console.log("relativePos: ", relativePos);
+
+		const needleAngle = segmentStartAngle - relativePos * segmentSizeAngle;
+		console.log("needleAngle for ", type, ":", needleAngle);
+		console.log("value: ", value);
+
 		const needleLength = (innerRadius + 2 * outerRadius) / 3;
 		const sin = Math.sin(-RADIAN * needleAngle);
 		const cos = Math.cos(-RADIAN * needleAngle);
@@ -93,6 +101,8 @@ export default function PMGauge({ value, type }: Props) {
 				{renderNeedle(value, data)}
 			</PieChart>
 			<h3>{`Status: ${currentRange?.name ?? "Unknown"}`}</h3>
+			<h4>{`Type: ${type}`}</h4>
+			<h4>{`Value: ${value}`}</h4>
 		</div>
 	);
 }

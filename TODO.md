@@ -6,3 +6,6 @@
 
 - InfoPage:
   Fix colors in table; too bright
+
+  -LocalStorage
+  Add selected location(in context) to localstorage

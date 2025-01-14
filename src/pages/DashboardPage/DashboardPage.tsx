@@ -22,7 +22,7 @@ export default function DashboardPage() {
 			<h2>You've selected: {capitalizeWords(selectedLocation.name)}</h2>
 			{hasError && <h3>An error occurred.</h3>}
 			<div className={styles.summaryContainer} style={{ backgroundColor }}>
-				<h2>Overall Air Quality: {data?.aqi}</h2>
+				<h2>Overall Air Quality (AQI): {data?.aqi}</h2>
 				<p>Status: {status}</p>
 				<FontAwesomeIcon
 					icon={icon}
