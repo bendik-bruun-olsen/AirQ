@@ -22,27 +22,20 @@ export default function PMGauge({ value, type }: Props) {
 	const outerRadius = 100;
 
 	const renderNeedle = (value: number, data: PMRangeInterface[]) => {
-		console.log("Value: ", value);
-
 		if (!currentRange) return null;
 		const currentRangeIndex = data.findIndex((data) => data === currentRange);
-		console.log("currentRangeIndex: ", currentRangeIndex);
-
 		if (currentRangeIndex === -1) return null;
+
 		const needleColor = "#000000";
 		const RADIAN = Math.PI / 180;
+
 		const segmentSizeAngle = 180 / data.length;
 		const segmentStartAngle = 180 - currentRangeIndex * segmentSizeAngle;
-		console.log("segmentStartAngle: ", segmentStartAngle);
 		const relativePos =
 			(value - currentRange.minValue) /
 			(currentRange.maxValue - currentRange.minValue);
-		console.log("relativePos: ", relativePos);
 
 		const needleAngle = segmentStartAngle - relativePos * segmentSizeAngle;
-		console.log("needleAngle for ", type, ":", needleAngle);
-		console.log("value: ", value);
-
 		const needleLength = (innerRadius + 2 * outerRadius) / 3;
 		const sin = Math.sin(-RADIAN * needleAngle);
 		const cos = Math.cos(-RADIAN * needleAngle);
