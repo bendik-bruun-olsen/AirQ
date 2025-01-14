@@ -30,7 +30,7 @@ interface ForecastData {
 	min: number;
 }
 
-interface Forecast {
+export interface Forecast {
 	daily: {
 		o3: ForecastData[];
 		pm10: ForecastData[];

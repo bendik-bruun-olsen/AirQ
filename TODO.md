@@ -9,3 +9,6 @@
 
   -LocalStorage
   Add selected location(in context) to localstorage
+
+-DashboardPage
+Add select menu for previous searches/selections

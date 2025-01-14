@@ -12,3 +12,7 @@
 hr {
 	margin-bottom: 10px;
 }
+
+main {
+	max-width: 1200px;
+}
