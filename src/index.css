@@ -5,6 +5,13 @@
 	font-family: "Roboto";
 }
 
+:root {
+	--dark-indigo: #292d53;
+	--slate-blue: #444768;
+	--deep-navy: #1f204c;
+	--sky-blue: #41a0e4;
+}
+
 #root {
 	height: 100vh;
 }
