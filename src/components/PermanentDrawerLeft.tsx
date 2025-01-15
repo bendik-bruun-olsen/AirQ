@@ -42,6 +42,7 @@ export default function PermanentDrawerLeft() {
 					"& .MuiDrawer-paper": {
 						width: drawerWidth,
 						boxSizing: "border-box",
+						backgroundColor: "var(--slate-blue)",
 					},
 				}}
 				variant="permanent"
@@ -51,9 +52,15 @@ export default function PermanentDrawerLeft() {
 				<Divider />
 				<List>
 					{menuItems.map((item) => (
-						<ListItem key={item.name} disablePadding>
+						<ListItem
+							key={item.name}
+							disablePadding
+							sx={{ color: "var(--white)" }}
+						>
 							<ListItemButton component={Link} to={item.link}>
-								<ListItemIcon>{item.icon}</ListItemIcon>
+								<ListItemIcon sx={{ color: "var(--white)" }}>
+									{item.icon}
+								</ListItemIcon>
 								<ListItemText primary={item.name} />
 							</ListItemButton>
 						</ListItem>
