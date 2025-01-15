@@ -38,7 +38,7 @@ export default function ForeCastGraph({ forecast }: Props) {
 
 	return (
 		<>
-			<Box sx={{ minWidth: 120, maxWidth: 280 }}>
+			<div className={styles.selectMenuContainer}>
 				<FormControl fullWidth>
 					<Select id="select-menu" value={selection} onChange={handleChange}>
 						<MenuItem value={"o3"}>Ozon</MenuItem>
@@ -47,7 +47,7 @@ export default function ForeCastGraph({ forecast }: Props) {
 						<MenuItem value={"uvi"}>UV Index</MenuItem>
 					</Select>
 				</FormControl>
-			</Box>
+			</div>
 			<div className={styles.graphContainer}>
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart

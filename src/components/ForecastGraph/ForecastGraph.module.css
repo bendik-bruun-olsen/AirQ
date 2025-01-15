@@ -1,4 +1,6 @@
 .selectMenuContainer {
+	min-width: 120px;
+	max-width: 280px;
 }
 
 .graphContainer {

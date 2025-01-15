@@ -8,6 +8,7 @@ import useFetchData from "../../hooks/useFetchData";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import PMGauge from "../../components/PMGauge/PMGauge";
 import ForeCastGraph from "../../components/ForecastGraph/ForecastGraph";
+import HumidityChart from "../../components/HumidityChart/PieChart";
 
 export default function DashboardPage() {
 	const { selectedLocation } = useContext(LocationContext);
@@ -41,6 +42,12 @@ export default function DashboardPage() {
 				<PMGauge value={data?.iaqi?.pm10?.v ?? 0} type={"pm10"} />
 			</div>
 			<br />
+			{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
+				<>
+					<h2>Humidity</h2>
+					<HumidityChart value={data.iaqi.h.v} />
+				</>
+			)}
 			<h2>Forecast:</h2>
 			{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
 		</>

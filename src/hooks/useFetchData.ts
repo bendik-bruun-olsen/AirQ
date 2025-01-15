@@ -4,7 +4,7 @@ import { APIResponse } from "../interfaces/APIResponse";
 const apiUrl = "http://api.waqi.info/feed/";
 const apiToken = import.meta.env.VITE_API_TOKEN;
 
-export default function useFetchData(location: string) {
+export default function useFetchData(uid: string) {
 	const [data, setData] = useState<APIResponse["data"] | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [hasError, setHasError] = useState<boolean>(false);
@@ -16,9 +16,7 @@ export default function useFetchData(location: string) {
 
 				setIsLoading(true);
 				setHasError(false);
-				const response = await fetch(
-					`${apiUrl}@${location}/?token=${apiToken}`
-				);
+				const response = await fetch(`${apiUrl}@${uid}/?token=${apiToken}`);
 				const result = await response.json();
 				if (result.status !== "ok") throw new Error("Failed to fetch data");
 				console.log("Success: ", result.data);
@@ -32,8 +30,8 @@ export default function useFetchData(location: string) {
 				setIsLoading(false);
 			}
 		};
-		if (location) fetchData();
-	}, [location]);
+		if (uid) fetchData();
+	}, [uid]);
 
 	return { data, hasError, isLoading };
 }
