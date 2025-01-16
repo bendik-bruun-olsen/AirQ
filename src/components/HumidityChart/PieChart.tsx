@@ -1,4 +1,5 @@
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import styles from "./PieChart.module.css";
 
 interface Props {
 	value: number;
@@ -21,27 +22,21 @@ export default function HumidityChart({ value }: Props) {
 			}}
 		>
 			<span
+				className={styles.text}
 				style={{
 					fontSize: diameter / 12,
-					position: "absolute",
 					top: `${diameter / 5}px`,
 					left: `${diameter / 2}px`,
-					zIndex: 1,
-					transform: "translate(-50%, -50%)",
-					color: "#ffffff",
 				}}
 			>
 				Humidity
 			</span>
 			<span
+				className={styles.text}
 				style={{
 					fontSize: diameter / 10,
-					position: "absolute",
 					top: `${diameter / 3}px`,
 					left: `${diameter / 2}px`,
-					zIndex: 1,
-					transform: "translate(-50%, -50%)",
-					color: "#ffffff",
 				}}
 			>
 				{value + "%"}
@@ -54,11 +49,11 @@ export default function HumidityChart({ value }: Props) {
 						cy="50%"
 						labelLine={false}
 						outerRadius={diameter / 2}
-						fill="#ffffff"
+						fill="var(--slate-blue)"
 						dataKey="value"
 						stroke="transparent"
 					>
-						<Cell fill={"#0088FE"} />
+						<Cell fill={"var(--sky-blue)"} />
 					</Pie>
 				</PieChart>
 			</ResponsiveContainer>
