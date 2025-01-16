@@ -54,8 +54,6 @@ export default function ForeCastGraph({ forecast }: Props) {
 			<div className={styles.graphContainer}>
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart
-						width={500}
-						height={400}
 						data={data[selectionIndex]}
 						margin={{
 							top: 10,

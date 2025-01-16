@@ -26,7 +26,7 @@ export default function PMGauge({ value, type }: Props) {
 		const currentRangeIndex = data.findIndex((data) => data === currentRange);
 		if (currentRangeIndex === -1) return null;
 
-		const needleColor = "#000000";
+		const needleColor = "var(--sky-blue)";
 		const RADIAN = Math.PI / 180;
 
 		const segmentSizeAngle = 180 / data.length;
@@ -56,12 +56,10 @@ export default function PMGauge({ value, type }: Props) {
 					cy={needleBaseCircleY}
 					r={needleBaseCircleRadius}
 					fill={needleColor}
-					stroke="none"
 				/>
 				<path
 					key="needle-path"
 					d={`M${needleBaseXba} ${needleBaseYba}L${needleBaseXbb} ${needleBaseYbb} L${needleTipX} ${needleTipY} L${needleBaseXba} ${needleBaseYba}`}
-					stroke="none"
 					fill={needleColor}
 				/>
 			</>
@@ -69,7 +67,7 @@ export default function PMGauge({ value, type }: Props) {
 	};
 
 	return (
-		<div className={styles.wrapper}>
+		<>
 			<PieChart
 				width={centerX * 2 + 10}
 				height={centerY + 10}
@@ -84,11 +82,10 @@ export default function PMGauge({ value, type }: Props) {
 					cy={centerY}
 					innerRadius={innerRadius}
 					outerRadius={outerRadius}
-					fill="#8884d8"
 					stroke="none"
 				>
 					{data.map((entry, index) => (
-						<Cell key={`cell-${index}`} fill={entry.color} />
+						<Cell key={`cell-${index}`} fill={entry.color} opacity="80%" />
 					))}
 				</Pie>
 				{renderNeedle(value, data)}
@@ -96,6 +93,6 @@ export default function PMGauge({ value, type }: Props) {
 			<h3>{`Status: ${currentRange?.name ?? "Unknown"}`}</h3>
 			<h4>{`Type: ${type}`}</h4>
 			<h4>{`Value: ${value}`}</h4>
-		</div>
+		</>
 	);
 }
