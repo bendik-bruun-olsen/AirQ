@@ -9,10 +9,15 @@
 	gap: 50px;
 }
 
-.itemWrapper {
+.itemContainer {
 	padding: 10px 15px;
 	background-color: var(--deep-navy);
 	margin: 12px 0;
 	width: fit-content;
 	border-radius: 12px;
+}
+
+.wrapper {
+	display: flex;
+	gap: 12px;
 }
