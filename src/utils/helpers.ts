@@ -5,4 +5,11 @@ const capitalizeWords = (text: string): string => {
 		.join(" ");
 };
 
-export { capitalizeWords };
+const formatDate = (date: string) => {
+	return new Intl.DateTimeFormat("no-NO", {
+		month: "short",
+		day: "numeric",
+	}).format(new Date(date));
+};
+
+export { capitalizeWords, formatDate };

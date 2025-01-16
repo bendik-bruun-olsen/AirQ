@@ -16,9 +16,6 @@ export default function DashboardPage() {
 	const { status, backgroundColor, icon } = getAqiStatus(data?.aqi ?? 0);
 
 	if (isLoading) return <LoadingPage />;
-
-	console.log("dashboard forecast: ", data?.forecast);
-
 	return (
 		<>
 			<h1>Dashboard</h1>

@@ -16,6 +16,7 @@ import {
 	XAxis,
 	YAxis,
 } from "recharts";
+import { formatDate } from "../../utils/helpers";
 
 interface Props {
 	forecast: Forecast;
@@ -27,6 +28,12 @@ export default function ForeCastGraph({ forecast }: Props) {
 		(key) => key === selection
 	);
 	const data = Object.values(forecast.daily);
+
+	data.forEach((entry) => {
+		entry.forEach((item) => {
+			item.day = formatDate(item.day);
+		});
+	});
 
 	const handleChange = (event: SelectChangeEvent) => {
 		setSelection(event.target.value as string);
@@ -61,12 +68,7 @@ export default function ForeCastGraph({ forecast }: Props) {
 						<XAxis dataKey="day" />
 						<YAxis />
 						<Tooltip />
-						<Area
-							type="monotone"
-							dataKey="avg"
-							stroke="#8884d8"
-							fill="#8884d8"
-						/>
+						<Area type="monotone" dataKey="avg" fill="var(--sky-blue)" />
 					</AreaChart>
 				</ResponsiveContainer>
 			</div>
