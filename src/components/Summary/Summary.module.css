@@ -1,2 +1,15 @@
-.container {
+.wrapper {
+	display: flex;
+	gap: 10px;
+}
+
+.textContainer {
+	display: flex;
+	align-items: end;
+	gap: 5px;
+}
+
+.aqiValue {
+	color: var(--faded-white);
+	font-size: 22px;
 }

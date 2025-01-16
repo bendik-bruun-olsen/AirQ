@@ -4,6 +4,7 @@
 - MapComponent:
   Load marker initially, instead of only on movement
   Should center on the last selected location (from context)
+  Add loading component
 
 - MapPopup:
   Fix handling of popups that appear gray (AQI is 0); missing data

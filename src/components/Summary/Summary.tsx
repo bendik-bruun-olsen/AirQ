@@ -13,12 +13,19 @@ interface Props {
 
 export default function Summary(aqi: Props) {
 	const { status, color, icon } = aqi.aqiStatus;
-	console.log("aqi received: ", aqi.aqiValue);
 
 	return (
-		<div className={styles.container}>
-			<h2>Overall Air Quality (AQI): {aqi.aqiValue}</h2>
-			<p>Status: {status}</p>
+		<div className={styles.wrapper}>
+			<div className={styles.container}>
+				<div className={styles.textContainer}>
+					<h2>Overall Air Quality:</h2>
+					<span className={styles.aqiValue}>{status}</span>
+				</div>
+				<div className={styles.textContainer}>
+					<h3>Value:</h3>
+					<span className={styles.aqiValue}>{aqi.aqiValue}</span>
+				</div>
+			</div>
 			<FontAwesomeIcon
 				icon={icon}
 				style={{
