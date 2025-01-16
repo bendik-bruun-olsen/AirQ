@@ -1,5 +1,4 @@
 import {
-	Box,
 	FormControl,
 	MenuItem,
 	Select,
@@ -28,9 +27,6 @@ export default function ForeCastGraph({ forecast }: Props) {
 		(key) => key === selection
 	);
 	const data = Object.values(forecast.daily);
-	console.log("data: ", data);
-
-	console.log("currentData: ", data[selectionIndex]);
 
 	const handleChange = (event: SelectChangeEvent) => {
 		setSelection(event.target.value as string);
