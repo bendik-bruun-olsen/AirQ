@@ -68,11 +68,12 @@ export default function PMGauge({ value, type }: Props) {
 
 	return (
 		<div className={styles.wrapper}>
-			<h3>
-				{type === "pm25"
-					? "Particulate Matter (2.5 microns)"
-					: "Particulate Matter (10 microns)"}
-			</h3>
+			<div className={styles.header}>
+				<h3>{type === "pm25" ? "Particulate Matter" : "Particulate Matter"}</h3>
+				<span className={styles.microns}>
+					{type === "pm25" ? "(2.5 microns)" : "(10 microns)"}
+				</span>
+			</div>
 			<div className={styles.pieContainer}>
 				<PieChart
 					width={centerX * 2 + 10}
@@ -97,6 +98,7 @@ export default function PMGauge({ value, type }: Props) {
 					{renderNeedle(value, data)}
 				</PieChart>
 			</div>
+
 			<h4>{`Status: ${currentRange?.name ?? "Unknown"}`}</h4>
 			<h4>{`Value: ${value} µg/m³`}</h4>
 		</div>

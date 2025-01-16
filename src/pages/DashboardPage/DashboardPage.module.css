@@ -3,12 +3,6 @@
 	padding: 10px;
 }
 
-.gaugeContainer {
-	display: flex;
-	flex-direction: row;
-	gap: 50px;
-}
-
 .itemContainer {
 	padding: 10px 15px;
 	background-color: var(--deep-navy);
@@ -17,7 +11,7 @@
 	border-radius: 12px;
 }
 
-.wrapper {
+.gaugeContainer {
 	display: flex;
 	gap: 12px;
 }

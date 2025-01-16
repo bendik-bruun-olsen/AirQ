@@ -34,7 +34,7 @@ export default function DashboardPage() {
 					style={{ width: "50px", height: "50px" }}
 				/>
 			</div>
-			<div className={styles.wrapper}>
+			<div className={styles.gaugeContainer}>
 				<div className={styles.itemContainer}>
 					<PMGauge value={data?.iaqi?.pm25?.v ?? 0} type={"pm25"} />
 				</div>
