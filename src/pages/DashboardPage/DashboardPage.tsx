@@ -42,14 +42,14 @@ export default function DashboardPage() {
 				<PMGauge value={data?.iaqi?.pm10?.v ?? 0} type={"pm10"} />
 			</div>
 			<br />
+			<h2>Forecast:</h2>
+			{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
 			{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
 				<>
 					<h2>Humidity</h2>
 					<HumidityChart value={data.iaqi.h.v} />
 				</>
 			)}
-			<h2>Forecast:</h2>
-			{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
 		</>
 	);
 }

@@ -4,45 +4,11 @@ interface Props {
 	value: number;
 }
 
-// interface LabelProps {
-// 	cx: string;
-// 	cy: string;
-// 	midAngle: number;
-// 	innerRadius: number;
-// 	outerRadius: number;
-// 	percent: number;
-// }
-
 export default function HumidityChart({ value }: Props) {
 	const data = [
 		{ name: "Humidity", value: value },
 		{ name: "Remaining", value: 100 - value },
 	];
-	// const RADIAN = Math.PI / 180;
-	// const renderLabel = ({
-	// 	cx,
-	// 	cy,
-	// 	midAngle,
-	// 	innerRadius,
-	// 	outerRadius,
-	// 	percent,
-	// }: LabelProps) => {
-	// 	if (percent !== value / 100) return null;
-	// 	const x = cx;
-	// 	const y = Number(cy) / 1.5;
-	// 	return (
-	// 		<text
-	// 			x={x}
-	// 			y={y}
-	// 			fill="white"
-	// 			textAnchor={"middle"}
-	// 			dominantBaseline="middle"
-	// 			fontSize={22}
-	// 		>
-	// 			{`${(percent * 100).toFixed(0)}%`}
-	// 		</text>
-	// 	);
-	// };
 
 	const diameter = 150;
 

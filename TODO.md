@@ -1,3 +1,6 @@
+- App.tsx:
+  Entering unused (ex "/") path redirects to dashboard
+
 - MapComponent:
   Load marker initially, instead of only on movement
   Should center on the last selected location (from context)
@@ -13,6 +16,7 @@
 
 - DashboardPage
   Add select menu for previous searches/selections
+  Add "Updated 1 hour ago" info
 
 - ForecastGraph
   Filter out stats/days that contain null value
