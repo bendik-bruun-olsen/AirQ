@@ -5,7 +5,7 @@ export const airQualityIndex = [
 		healthImplications:
 			"Air quality is considered satisfactory, and air pollution poses little or no risk.",
 		cautionaryStatement: "None",
-		backgroundColor: "#009966",
+		backgroundColor: "var(--good-green)",
 	},
 	{
 		AQI: "51 - 100",
@@ -14,7 +14,7 @@ export const airQualityIndex = [
 			"Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.",
 		cautionaryStatement:
 			"Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.",
-		backgroundColor: "#FFDE33",
+		backgroundColor: "var(--moderate-yellow)",
 	},
 	{
 		AQI: "101 - 150",
@@ -23,7 +23,7 @@ export const airQualityIndex = [
 			"Members of sensitive groups may experience health effects. The general public is not likely to be affected.",
 		cautionaryStatement:
 			"Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.",
-		backgroundColor: "#FF9933",
+		backgroundColor: "var(--sensitive-orange)",
 	},
 	{
 		AQI: "151 - 200",
@@ -32,7 +32,7 @@ export const airQualityIndex = [
 			"Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.",
 		cautionaryStatement:
 			"Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion.",
-		backgroundColor: "#CC0033",
+		backgroundColor: "var(--unhealthy-red)",
 	},
 	{
 		AQI: "201 - 300",
@@ -41,7 +41,7 @@ export const airQualityIndex = [
 			"Health warnings of emergency conditions. The entire population is more likely to be affected.",
 		cautionaryStatement:
 			"Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.",
-		backgroundColor: "#660099",
+		backgroundColor: "var(--very-unhealthy-purple)",
 	},
 	{
 		AQI: "300+",
@@ -49,6 +49,6 @@ export const airQualityIndex = [
 		healthImplications:
 			"Health alert: everyone may experience more serious health effects.",
 		cautionaryStatement: "Everyone should avoid all outdoor exertion.",
-		backgroundColor: "#7E0023",
+		backgroundColor: "var(--hazardous-maroon)",
 	},
 ];
