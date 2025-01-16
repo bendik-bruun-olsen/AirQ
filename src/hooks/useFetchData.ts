@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { APIResponse } from "../interfaces/APIResponse";
 
-const apiUrl = "http://api.waqi.info/feed/";
+const apiUrl = "https://api.waqi.info/feed/";
 const apiToken = import.meta.env.VITE_API_TOKEN;
 
 export default function useFetchData(uid: string) {
