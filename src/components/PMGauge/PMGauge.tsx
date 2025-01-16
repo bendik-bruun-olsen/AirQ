@@ -67,32 +67,38 @@ export default function PMGauge({ value, type }: Props) {
 	};
 
 	return (
-		<>
-			<PieChart
-				width={centerX * 2 + 10}
-				height={centerY + 10}
-				className={styles.pieChart}
-			>
-				<Pie
-					dataKey="value"
-					startAngle={180}
-					endAngle={0}
-					data={data}
-					cx={centerX}
-					cy={centerY}
-					innerRadius={innerRadius}
-					outerRadius={outerRadius}
-					stroke="none"
+		<div className={styles.wrapper}>
+			<h3>
+				{type === "pm25"
+					? "Particulate Matter (2.5 microns)"
+					: "Particulate Matter (10 microns)"}
+			</h3>
+			<div className={styles.pieContainer}>
+				<PieChart
+					width={centerX * 2 + 10}
+					height={centerY + 10}
+					className={styles.pieChart}
 				>
-					{data.map((entry, index) => (
-						<Cell key={`cell-${index}`} fill={entry.color} opacity="50%" />
-					))}
-				</Pie>
-				{renderNeedle(value, data)}
-			</PieChart>
-			<h3>{`Status: ${currentRange?.name ?? "Unknown"}`}</h3>
-			<h4>{`Type: ${type}`}</h4>
-			<h4>{`Value: ${value}`}</h4>
-		</>
+					<Pie
+						dataKey="value"
+						startAngle={180}
+						endAngle={0}
+						data={data}
+						cx={centerX}
+						cy={centerY}
+						innerRadius={innerRadius}
+						outerRadius={outerRadius}
+						stroke="none"
+					>
+						{data.map((entry, index) => (
+							<Cell key={`cell-${index}`} fill={entry.color} opacity="50%" />
+						))}
+					</Pie>
+					{renderNeedle(value, data)}
+				</PieChart>
+			</div>
+			<h4>{`Status: ${currentRange?.name ?? "Unknown"}`}</h4>
+			<h4>{`Value: ${value} µg/m³`}</h4>
+		</div>
 	);
 }
