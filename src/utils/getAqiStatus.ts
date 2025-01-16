@@ -18,6 +18,13 @@ interface AQIRange {
 
 const AQI_DATA: AQIRange[] = [
 	{
+		min: -1,
+		max: -1,
+		status: "Data Unavailable",
+		backgroundColor: "#9E9E9E",
+		icon: faFrown,
+	},
+	{
 		min: 0,
 		max: 50,
 		status: "Good",

@@ -9,11 +9,12 @@ import LoadingPage from "../LoadingPage/LoadingPage";
 import PMGauge from "../../components/PMGauge/PMGauge";
 import ForeCastGraph from "../../components/ForecastGraph/ForecastGraph";
 import HumidityChart from "../../components/HumidityChart/PieChart";
+import Summary from "../../components/Summary/Summary";
 
 export default function DashboardPage() {
 	const { selectedLocation } = useContext(LocationContext);
 	const { data, isLoading, hasError } = useFetchData(selectedLocation.uid);
-	const { status, backgroundColor, icon } = getAqiStatus(data?.aqi ?? 0);
+	const aqiStatus = getAqiStatus(data?.aqi ?? -1);
 
 	if (isLoading) return <LoadingPage />;
 	return (
@@ -25,14 +26,10 @@ export default function DashboardPage() {
 				Current temp: {data?.iaqi?.t?.v ?? "Unknown"}
 				{data?.iaqi?.t?.v && "℃"}
 			</h4>
-			<div className={styles.summaryContainer} style={{ backgroundColor }}>
-				<h2>Overall Air Quality (AQI): {data?.aqi}</h2>
-				<p>Status: {status}</p>
-				<FontAwesomeIcon
-					icon={icon}
-					style={{ width: "50px", height: "50px" }}
-				/>
+			<div className={styles.itemContainer}>
+				<Summary aqiValue={data?.aqi ?? "No data"} aqiStatus={aqiStatus} />
 			</div>
+
 			<div className={styles.gaugeContainer}>
 				<div className={styles.itemContainer}>
 					<PMGauge value={data?.iaqi?.pm25?.v ?? 0} type={"pm25"} />
