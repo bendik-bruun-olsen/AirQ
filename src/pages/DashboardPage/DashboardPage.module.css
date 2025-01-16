@@ -10,7 +10,7 @@
 }
 
 .itemWrapper {
-	padding: 10px;
+	padding: 10px 15px;
 	background-color: var(--deep-navy);
 	margin: 12px 0;
 	width: fit-content;
