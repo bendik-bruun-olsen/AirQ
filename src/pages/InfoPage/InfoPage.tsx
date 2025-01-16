@@ -35,10 +35,7 @@ export default function InfoPage() {
 					</TableHead>
 					<TableBody>
 						{airQualityIndex.map((item) => (
-							<TableRow
-								key={item.level}
-								sx={{ backgroundColor: item.backgroundColor }}
-							>
+							<TableRow key={item.level} sx={{ backgroundColor: item.color }}>
 								<TableCell className={`${styles.text} ${styles.box}`}>
 									{item.AQI}
 								</TableCell>

@@ -12,7 +12,7 @@ interface AQIRange {
 	min: number;
 	max: number;
 	status: string;
-	backgroundColor: string;
+	color: string;
 	icon: IconProp;
 }
 
@@ -21,56 +21,55 @@ const AQI_DATA: AQIRange[] = [
 		min: -1,
 		max: -1,
 		status: "Data Unavailable",
-		backgroundColor: "#9E9E9E",
+		color: "#9E9E9E",
 		icon: faFrown,
 	},
 	{
 		min: 0,
 		max: 50,
 		status: "Good",
-		backgroundColor: "#009966",
+		color: "#009966",
 		icon: faSmile,
 	},
 	{
 		min: 51,
 		max: 100,
 		status: "Moderate",
-		backgroundColor: "#FFDE33",
+		color: "#FFDE33",
 		icon: faMeh,
 	},
 	{
 		min: 101,
 		max: 150,
 		status: "Unhealthy for Sensitive Groups",
-		backgroundColor: "#FF9933",
+		color: "#FF9933",
 		icon: faFrownOpen,
 	},
 	{
 		min: 151,
 		max: 200,
 		status: "Unhealthy",
-		backgroundColor: "#CC0033",
+		color: "#CC0033",
 		icon: faFrown,
 	},
 	{
 		min: 201,
 		max: 300,
 		status: "Very Unhealthy",
-		backgroundColor: "#660099",
+		color: "#660099",
 		icon: faGrimace,
 	},
 	{
 		min: 301,
 		max: Infinity,
 		status: "Hazardous",
-		backgroundColor: "#7E0023",
+		color: "#7E0023",
 		icon: faDizzy,
 	},
 ];
 
 export default function getAqiStatus(aqi: number) {
 	const result = AQI_DATA.find((range) => aqi >= range.min && aqi <= range.max);
-	if (!result)
-		return { status: "Unknown", backgroundColor: "blue", icon: faFrown };
+	if (!result) return AQI_DATA[0];
 	return result;
 }

@@ -1,8 +1,3 @@
-.summaryContainer {
-	width: 100%;
-	padding: 10px;
-}
-
 .itemContainer {
 	padding: 10px 15px;
 	background-color: var(--deep-navy);
@@ -11,7 +6,7 @@
 	border-radius: 12px;
 }
 
-.gaugeContainer {
+.wrapper {
 	display: flex;
 	gap: 12px;
 }

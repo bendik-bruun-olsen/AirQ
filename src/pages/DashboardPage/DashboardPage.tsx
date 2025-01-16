@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { capitalizeWords } from "../../utils/helpers";
 import styles from "./DashboardPage.module.css";
 import getAqiStatus from "../../utils/getAqiStatus";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useFetchData from "../../hooks/useFetchData";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import PMGauge from "../../components/PMGauge/PMGauge";
@@ -21,27 +20,35 @@ export default function DashboardPage() {
 		<>
 			<h1>Dashboard</h1>
 			<hr />
-			<h2>You've selected: {capitalizeWords(selectedLocation.name)}</h2>
-			<h4>
-				Current temp: {data?.iaqi?.t?.v ?? "Unknown"}
-				{data?.iaqi?.t?.v && "℃"}
-			</h4>
-			<div className={styles.itemContainer}>
-				<Summary aqiValue={data?.aqi ?? "No data"} aqiStatus={aqiStatus} />
+			<div className={styles.wrapper}>
+				<div className={styles.itemContainer}>
+					<h2>You've selected: {capitalizeWords(selectedLocation.name)}</h2>
+					<h4>
+						Current temp: {data?.iaqi?.t?.v ?? "Unknown"}
+						{data?.iaqi?.t?.v && "℃"}
+					</h4>
+				</div>
+				<div className={styles.itemContainer}>
+					<Summary aqiValue={data?.aqi ?? "No data"} aqiStatus={aqiStatus} />
+				</div>
 			</div>
 
-			<div className={styles.gaugeContainer}>
-				<div className={styles.itemContainer}>
-					<PMGauge value={data?.iaqi?.pm25?.v ?? 0} type={"pm25"} />
-				</div>
-				<div className={styles.itemContainer}>
-					<PMGauge value={data?.iaqi?.pm10?.v ?? 0} type={"pm10"} />
-				</div>
-				<div className={styles.itemContainer}>
-					{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
+			<div className={styles.wrapper}>
+				{data?.iaqi?.pm25?.v && (
+					<div className={styles.itemContainer}>
+						<PMGauge value={data.iaqi.pm25.v} type={"pm25"} />
+					</div>
+				)}
+				{data?.iaqi?.pm10?.v && (
+					<div className={styles.itemContainer}>
+						<PMGauge value={data.iaqi.pm10.v} type={"pm10"} />
+					</div>
+				)}
+				{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
+					<div className={styles.itemContainer}>
 						<HumidityChart value={data.iaqi.h.v} />
-					)}
-				</div>
+					</div>
+				)}
 			</div>
 			<div className={styles.itemContainer}>
 				{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
