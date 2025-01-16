@@ -94,8 +94,8 @@ export default function ForeCastGraph({ forecast }: Props) {
 						data={data[selectionIndex]}
 						margin={{
 							top: 10,
-							right: 30,
-							left: 0,
+							right: 0,
+							left: -35,
 							bottom: 0,
 						}}
 					>
