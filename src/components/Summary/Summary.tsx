@@ -21,10 +21,6 @@ export default function Summary(aqi: Props) {
 					<h2>Overall Air Quality:</h2>
 					<span className={styles.aqiValue}>{status}</span>
 				</div>
-				<div className={styles.textContainer}>
-					<h3>Value:</h3>
-					<span className={styles.aqiValue}>{aqi.aqiValue}</span>
-				</div>
 			</div>
 			<FontAwesomeIcon
 				icon={icon}

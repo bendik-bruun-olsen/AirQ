@@ -19,14 +19,14 @@ export default function DashboardPage() {
 	return (
 		<>
 			<h1>Dashboard</h1>
-			<hr />
+			<div className="divider" />
 			<div className={styles.wrapper}>
 				<div className={styles.itemContainer}>
-					<h2>You've selected: {capitalizeWords(selectedLocation.name)}</h2>
-					<h4>
+					<h2>Location: {capitalizeWords(selectedLocation.name)}</h2>
+					<h3>
 						Current temp: {data?.iaqi?.t?.v ?? "Unknown"}
 						{data?.iaqi?.t?.v && "℃"}
-					</h4>
+					</h3>
 				</div>
 				<div className={styles.itemContainer}>
 					<Summary aqiValue={data?.aqi ?? "No data"} aqiStatus={aqiStatus} />

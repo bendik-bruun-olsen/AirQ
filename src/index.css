@@ -31,10 +31,13 @@
 	);
 }
 
-h1,
 h2,
 h3,
 h4 {
+	color: var(--white);
+}
+
+h1 {
 	color: var(--white);
 }
 
@@ -46,8 +49,12 @@ h4 {
 	font-size: 14px;
 }
 
-hr {
+.divider {
 	margin-bottom: 10px;
+	background-color: var(--slate-blue-light);
+	height: 8px;
+	width: 100%;
+	border-radius: 10px;
 }
 
 main {

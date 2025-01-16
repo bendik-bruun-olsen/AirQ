@@ -92,7 +92,7 @@ export default function PMGauge({ value, type }: Props) {
 						stroke="none"
 					>
 						{data.map((entry, index) => (
-							<Cell key={`cell-${index}`} fill={entry.color} opacity="60%" />
+							<Cell key={`cell-${index}`} fill={entry.color} opacity="80%" />
 						))}
 					</Pie>
 					{renderNeedle(value, data)}
