@@ -103,7 +103,8 @@ export default function PMGauge({ value, type }: Props) {
 				<span className={styles.value}>{`${value} µg/m³`}</span>
 			</div>
 			<div className={styles.textContainer}>
-				<h4>{`Status: ${currentRange?.name ?? "Unknown"}`}</h4>
+				<h4>Status:</h4>
+				<span className={styles.value}>{currentRange?.name ?? "Unknown"}</span>
 			</div>
 		</div>
 	);

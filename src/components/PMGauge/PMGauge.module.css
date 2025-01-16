@@ -4,6 +4,7 @@
 .pieContainer {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 5px;
 }
 
 .header {
@@ -15,12 +16,8 @@
 }
 
 .value {
-	color: var(--white);
-	font-size: 16px;
-}
-
-.status {
-	color: var(--white);
+	color: var(--faded-white);
+	font-size: 14px;
 }
 
 .textContainer {
