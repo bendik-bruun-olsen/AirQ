@@ -37,10 +37,6 @@ function ContextProvider({ children }: Props) {
 		uid: "2657",
 	});
 
-	useEffect(() => {
-		console.log("(ContextProvider) selectedLocation: ", selectedLocation);
-	}, [selectedLocation]);
-
 	return (
 		<LocationContext.Provider
 			value={{

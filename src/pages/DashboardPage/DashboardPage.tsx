@@ -12,7 +12,7 @@ import Summary from "../../components/Summary/Summary";
 
 export default function DashboardPage() {
 	const { selectedLocation } = useContext(LocationContext);
-	const { data, isLoading, hasError } = useFetchData(selectedLocation.uid);
+	const { data, isLoading } = useFetchData(selectedLocation.uid);
 	const aqiStatus = getAqiStatus(data?.aqi ?? -1);
 
 	if (isLoading) return <LoadingPage />;

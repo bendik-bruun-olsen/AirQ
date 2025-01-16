@@ -11,16 +11,6 @@ import { airQualityIndex } from "../../constants/airQualityIndex";
 import styles from "./InfoPage.module.css";
 
 export default function InfoPage() {
-	const reduceOpacity = (color: string, opacity: number) => {
-		const hexToRgba = (hex: string, alpha: number) => {
-			hex = hex.replace("#", "");
-			const r = parseInt(hex.substring(0, 2), 16);
-			const g = parseInt(hex.substring(2, 4), 16);
-			const b = parseInt(hex.substring(4, 6), 16);
-			return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-		};
-		return hexToRgba(color, opacity);
-	};
 	return (
 		<>
 			<h1>Information</h1>

@@ -12,15 +12,11 @@ export default function useFetchData(uid: string) {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				console.log("Fetching from hook");
-
 				setIsLoading(true);
 				setHasError(false);
 				const response = await fetch(`${apiUrl}@${uid}/?token=${apiToken}`);
 				const result = await response.json();
 				if (result.status !== "ok") throw new Error("Failed to fetch data");
-				console.log("Success: ", result.data);
-
 				setData(result.data as APIResponse["data"]);
 			} catch (e) {
 				setHasError(true);
