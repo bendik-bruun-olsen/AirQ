@@ -4,18 +4,7 @@ import {
 	useState,
 	Dispatch,
 	SetStateAction,
-	useEffect,
 } from "react";
-
-// interface LocationContextType {
-// 	selectedLocation: APIResponse["data"] | null;
-// 	setSelectedLocation: Dispatch<SetStateAction<APIResponse["data"] | null>>;
-// }
-
-// const CityContext = createContext<LocationContextType>({
-// 	selectedLocation: null,
-// 	setSelectedLocation: () => {},
-// });
 
 interface LocationContextType {
 	selectedLocation: { name: string; uid: string };
