@@ -41,15 +41,52 @@ export default function ForeCastGraph({ forecast }: Props) {
 
 	return (
 		<>
-			<div className={styles.selectMenuContainer}>
-				<FormControl fullWidth>
-					<Select id="select-menu" value={selection} onChange={handleChange}>
-						<MenuItem value={"o3"}>Ozon</MenuItem>
-						<MenuItem value={"pm10"}>Particulate Matter (10 microns)</MenuItem>
-						<MenuItem value={"pm25"}>Particulate Matter (2.5 microns)</MenuItem>
-						<MenuItem value={"uvi"}>UV Index</MenuItem>
-					</Select>
-				</FormControl>
+			<div className={styles.header}>
+				<h2>Forecast</h2>
+				<div className={styles.selectMenuContainer}>
+					<FormControl fullWidth>
+						<Select
+							sx={{
+								height: 40,
+								backgroundColor: "var(--slate-blue)",
+								color: "var(--white)",
+							}}
+							id="select-menu"
+							className={styles.selectMenu}
+							value={selection}
+							onChange={handleChange}
+							MenuProps={{
+								PaperProps: {
+									sx: {
+										backgroundColor: "var(--slate-blue)",
+										color: "var(--white)",
+										"& .MuiMenuItem-root": {
+											backgroundColor: "var(--slate-blue)",
+											"&:hover": {
+												backgroundColor: "var(--sky-blue)",
+											},
+											"&.Mui-selected": {
+												backgroundColor: "var(--slate-blue-light)",
+												"&:hover": {
+													backgroundColor: "var(--sky-blue)",
+												},
+											},
+										},
+									},
+								},
+							}}
+						>
+							<MenuItem value={"o3"}>Ozon</MenuItem>
+							<MenuItem value={"pm10"}>
+								Particulate Matter (10 microns)
+							</MenuItem>
+							<MenuItem value={"pm25"}>
+								Particulate Matter (2.5 microns)
+							</MenuItem>
+							<MenuItem value={"uvi"}>UV Index</MenuItem>
+						</Select>
+					</FormControl>
+				</div>
 			</div>
 			<div className={styles.graphContainer}>
 				<ResponsiveContainer width="100%" height="100%">

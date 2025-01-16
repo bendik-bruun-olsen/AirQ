@@ -1,10 +1,18 @@
 .selectMenuContainer {
-	min-width: 120px;
-	max-width: 280px;
+	width: 270px;
 }
+
+/* .selectMenu {
+	background-color: var(--white);
+} */
 
 .graphContainer {
 	min-width: 800px;
 	width: 100%;
 	aspect-ratio: 3 / 1;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
 }
