@@ -11,7 +11,7 @@ export default function HumidityChart({ value }: Props) {
 		{ name: "Remaining", value: 100 - value },
 	];
 
-	const diameter = 150;
+	const diameter = 170;
 
 	return (
 		<div

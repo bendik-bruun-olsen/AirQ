@@ -25,7 +25,6 @@ export default function DashboardPage() {
 				Current temp: {data?.iaqi?.t?.v ?? "Unknown"}
 				{data?.iaqi?.t?.v && "℃"}
 			</h4>
-			{hasError && <h3>An error occurred.</h3>}
 			<div className={styles.summaryContainer} style={{ backgroundColor }}>
 				<h2>Overall Air Quality (AQI): {data?.aqi}</h2>
 				<p>Status: {status}</p>
@@ -41,14 +40,14 @@ export default function DashboardPage() {
 				<div className={styles.itemContainer}>
 					<PMGauge value={data?.iaqi?.pm10?.v ?? 0} type={"pm10"} />
 				</div>
+				<div className={styles.itemContainer}>
+					{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
+						<HumidityChart value={data.iaqi.h.v} />
+					)}
+				</div>
 			</div>
 			<div className={styles.itemContainer}>
 				{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
-			</div>
-			<div className={styles.itemContainer}>
-				{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
-					<HumidityChart value={data.iaqi.h.v} />
-				)}
 			</div>
 		</>
 	);
