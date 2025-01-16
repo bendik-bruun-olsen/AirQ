@@ -8,3 +8,11 @@
 	flex-direction: row;
 	gap: 50px;
 }
+
+.itemWrapper {
+	padding: 10px;
+	background-color: var(--deep-navy);
+	margin: 12px 0;
+	width: fit-content;
+	border-radius: 12px;
+}

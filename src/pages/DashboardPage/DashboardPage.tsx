@@ -37,19 +37,21 @@ export default function DashboardPage() {
 					style={{ width: "50px", height: "50px" }}
 				/>
 			</div>
-			<div className={styles.gaugeContainer}>
+			<div className={styles.itemWrapper}>
 				<PMGauge value={data?.iaqi?.pm25?.v ?? 0} type={"pm25"} />
+			</div>
+			<div className={styles.itemWrapper}>
 				<PMGauge value={data?.iaqi?.pm10?.v ?? 0} type={"pm10"} />
 			</div>
 			<br />
-			<h2>Forecast:</h2>
-			{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
-			{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
-				<>
-					<h2>Humidity</h2>
+			<div className={styles.itemWrapper}>
+				{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
+			</div>
+			<div className={styles.itemWrapper}>
+				{data?.iaqi?.h && data?.iaqi?.h?.v !== 0 && (
 					<HumidityChart value={data.iaqi.h.v} />
-				</>
-			)}
+				)}
+			</div>
 		</>
 	);
 }
