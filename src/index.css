@@ -14,6 +14,12 @@
 	--sky-blue: #41a0e4;
 	--white: #ebebeb;
 	--faded-white: #cacaca;
+	--good-green: #00e400;
+	--moderate-yellow: #ffff00;
+	--sensitive-orange: #ff7e00;
+	--unhealthy-red: #ff0000;
+	--very-unhealthy-purple: #8f3f97;
+	--hazardous-maroon: #7e0023;
 }
 
 #root {
