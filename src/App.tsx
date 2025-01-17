@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import MapPage from "./pages/MapPage/MapPage";
 import InfoPage from "./pages/InfoPage/InfoPage";
@@ -11,7 +11,8 @@ export default function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Layout />}>
-						<Route index path="dashboard" element={<DashboardPage />} />
+						<Route index element={<Navigate to="/dashboard" replace />} />
+						<Route path="dashboard" element={<DashboardPage />} />
 						<Route path="map" element={<MapPage />} />
 						<Route path="info" element={<InfoPage />} />
 					</Route>
