@@ -1,8 +1,7 @@
 import { LocationContext } from "../../context/ContextProvider";
 import { useContext } from "react";
-import { capitalizeWords } from "../../utils/helpers";
+// import { capitalizeWords } from "../../utils/helpers";
 import styles from "./DashboardPage.module.css";
-import getAqiStatus from "../../utils/getAqiStatus";
 import useFetchData from "../../hooks/useFetchData";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import PMGauge from "../../components/PMGauge/PMGauge";
@@ -13,23 +12,22 @@ import Summary from "../../components/Summary/Summary";
 export default function DashboardPage() {
 	const { selectedLocation } = useContext(LocationContext);
 	const { data, isLoading } = useFetchData(selectedLocation.uid);
-	const aqiStatus = getAqiStatus(data?.aqi ?? -1);
 
-	if (isLoading) return <LoadingPage />;
+	if (isLoading || data === null) return <LoadingPage />;
 	return (
 		<>
 			<h1>Dashboard</h1>
 			<div className="divider" />
 			<div className={styles.wrapper}>
-				<div className={styles.itemContainer}>
+				{/* <div className={styles.itemContainer}>
 					<h2>Location: {capitalizeWords(selectedLocation.name)}</h2>
 					<h3>
 						Current temp: {data?.iaqi?.t?.v ?? "Unknown"}
 						{data?.iaqi?.t?.v && "℃"}
 					</h3>
-				</div>
+				</div> */}
 				<div className={styles.itemContainer}>
-					<Summary aqiValue={data?.aqi ?? "No data"} aqiStatus={aqiStatus} />
+					<Summary data={data} />
 				</div>
 			</div>
 
@@ -50,9 +48,11 @@ export default function DashboardPage() {
 					</div>
 				)}
 			</div>
-			<div className={styles.itemContainer}>
-				{data?.forecast && <ForeCastGraph forecast={data.forecast} />}
-			</div>
+			{data?.forecast && (
+				<div className={styles.itemContainer}>
+					<ForeCastGraph forecast={data.forecast} />
+				</div>
+			)}
 		</>
 	);
 }

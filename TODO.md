@@ -1,6 +1,3 @@
-- App.tsx:
-  Entering unused (ex "/") path redirects to dashboard
-
 - MapComponent:
   Load marker initially, instead of only on movement
   Should center on the last selected location (from context)
