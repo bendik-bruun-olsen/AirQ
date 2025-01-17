@@ -25,3 +25,7 @@
 	align-items: end;
 	gap: 3px;
 }
+
+.wrapper {
+	min-width: 250px;
+}
