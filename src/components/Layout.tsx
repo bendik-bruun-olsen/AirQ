@@ -5,7 +5,7 @@ export default function Layout() {
 	return (
 		<>
 			<PermanentDrawerLeft />
-			<main style={{ marginLeft: "var(--drawer-width)", paddingLeft: 20 }}>
+			<main>
 				<Outlet />
 			</main>
 		</>

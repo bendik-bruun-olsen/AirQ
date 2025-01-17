@@ -61,5 +61,6 @@ h4 {
 
 main {
 	max-width: 1200px;
-	background-color: transparent !important;
+	margin-left: var(--drawer-width);
+	padding: 50px;
 }
