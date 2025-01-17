@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Divider from "@mui/material/Divider";
@@ -11,6 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MapIcon from "@mui/icons-material/Map";
 import InfoIcon from "@mui/icons-material/Info";
 import { Link } from "react-router-dom";
+import Logo from "./Logo/Logo";
 
 export default function PermanentDrawerLeft() {
 	const menuItems = [
@@ -51,6 +51,8 @@ export default function PermanentDrawerLeft() {
 				variant="permanent"
 				anchor="left"
 			>
+				<Logo />
+				<Divider />
 				<List>
 					{menuItems.map((item) => (
 						<ListItem key={item.name} sx={{ color: "var(--white)" }}>

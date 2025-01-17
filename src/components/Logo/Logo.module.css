@@ -3,9 +3,21 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin: 5px 0 20px 0;
 }
 .title {
+	font-family: "Barlow";
+	font-weight: 600;
+	font-size: 56px;
+	color: var(--white);
+	text-shadow: 2px 2px 2px var(--deep-navy);
 }
 
 .slogan {
+	color: var(--deep-navy-light);
+}
+
+.title,
+.slogan {
+	user-select: none;
 }
