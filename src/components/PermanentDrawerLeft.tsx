@@ -41,6 +41,11 @@ export default function PermanentDrawerLeft() {
 						width: "var(--drawer-width)",
 						boxSizing: "border-box",
 						backgroundColor: "var(--slate-blue)",
+						"& .MuiListItem-root": {
+							"&:hover": {
+								backgroundColor: "var(--slate-blue-light)",
+							},
+						},
 					},
 				}}
 				variant="permanent"
