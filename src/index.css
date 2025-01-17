@@ -20,6 +20,8 @@
 	--unhealthy-red: #ff0000;
 	--very-unhealthy-purple: #8f3f97;
 	--hazardous-maroon: #7e0023;
+
+	--drawer-width: 230px;
 }
 
 #root {

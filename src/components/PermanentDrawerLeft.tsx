@@ -10,9 +10,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MapIcon from "@mui/icons-material/Map";
 import InfoIcon from "@mui/icons-material/Info";
-import { Link, Outlet } from "react-router-dom";
-
-const drawerWidth = 240;
+import { Link } from "react-router-dom";
 
 export default function PermanentDrawerLeft() {
 	const menuItems = [
@@ -37,10 +35,10 @@ export default function PermanentDrawerLeft() {
 		<Box sx={{ display: "flex" }}>
 			<Drawer
 				sx={{
-					width: drawerWidth,
+					width: "var(--drawer-width)",
 					flexShrink: 0,
 					"& .MuiDrawer-paper": {
-						width: drawerWidth,
+						width: "var(--drawer-width)",
 						boxSizing: "border-box",
 						backgroundColor: "var(--slate-blue)",
 					},
@@ -48,15 +46,9 @@ export default function PermanentDrawerLeft() {
 				variant="permanent"
 				anchor="left"
 			>
-				<Toolbar />
-				<Divider />
 				<List>
 					{menuItems.map((item) => (
-						<ListItem
-							key={item.name}
-							disablePadding
-							sx={{ color: "var(--white)" }}
-						>
+						<ListItem key={item.name} sx={{ color: "var(--white)" }}>
 							<ListItemButton component={Link} to={item.link}>
 								<ListItemIcon sx={{ color: "var(--white)" }}>
 									{item.icon}
@@ -67,13 +59,6 @@ export default function PermanentDrawerLeft() {
 					))}
 				</List>
 			</Drawer>
-			<Box
-				component="main"
-				sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-			>
-				<Toolbar />
-				<Outlet />
-			</Box>
 		</Box>
 	);
 }
