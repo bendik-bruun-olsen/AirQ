@@ -23,7 +23,6 @@ interface StationData {
 
 function FetchMarkers() {
 	const [stations, setStations] = useState<StationData[]>([]);
-	const [error, setError] = useState<string | null>(null);
 
 	const map = useMapEvents({
 		moveend: () => {
@@ -38,11 +37,10 @@ function FetchMarkers() {
 				`${apiUrl}?latlng=${boundsString}&token=${apiToken}`
 			);
 			const data = await response.json();
-			if (data.status !== "ok") throw new Error(data.data);
+			if (data.status !== "ok") throw new Error();
 			setStations(data.data);
-			setError(null);
 		} catch {
-			setError("Failed to fetch markers");
+			console.error("Failed to fetch markers");
 		}
 	};
 
@@ -71,7 +69,6 @@ function FetchMarkers() {
 					</Popup>
 				</Marker>
 			))}
-			{error && <div>{error}</div>}
 		</>
 	);
 }
