@@ -14,12 +14,13 @@
 	--sky-blue: #41a0e4;
 	--white: #ebebeb;
 	--faded-white: #cacaca;
-	--good-green: #00e400;
-	--moderate-yellow: #ffff00;
-	--sensitive-orange: #ff7e00;
-	--unhealthy-red: #ff0000;
-	--very-unhealthy-purple: #8f3f97;
-	--hazardous-maroon: #7e0023;
+
+	--good-green: #177956;
+	--moderate-yellow: #837014;
+	--sensitive-orange: #a45e16;
+	--unhealthy-red: #981332;
+	--very-unhealthy-purple: #551174;
+	--hazardous-maroon: #621127;
 
 	--drawer-width: 230px;
 }
