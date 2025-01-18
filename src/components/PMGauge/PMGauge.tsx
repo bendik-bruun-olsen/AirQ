@@ -1,4 +1,4 @@
-import { Cell, Pie, PieChart } from "recharts";
+import { Cell, Pie, PieChart, Tooltip } from "recharts";
 import {
 	PM10Ranges,
 	PM25Ranges,
@@ -10,6 +10,33 @@ interface Props {
 	value: number;
 	type: string;
 }
+
+interface TooltipPayload {
+	name: string;
+	value: number;
+	payload: {
+		name: string;
+		minValue: number;
+		maxValue: number;
+		color: string;
+		value: number;
+	};
+	dataKey: string;
+	stroke: string;
+	fill: string;
+	cx: number;
+	cy: number;
+	minValue: number;
+	maxValue: number;
+	color: string;
+}
+
+interface CustomTooltipProps {
+	active: boolean;
+	payload: TooltipPayload[];
+}
+
+// interface CustomTooltipProps extends TooltipProps<number, string> {}
 
 export default function PMGauge({ value, type }: Props) {
 	const data = type === "pm25" ? PM25Ranges : PM10Ranges;
@@ -66,6 +93,30 @@ export default function PMGauge({ value, type }: Props) {
 		);
 	};
 
+	const customTooltip = ({ active, payload }: CustomTooltipProps) => {
+		if (active && payload && payload.length) {
+			const { name, minValue, maxValue } = payload[0].payload;
+			return (
+				<div
+					style={{
+						backgroundColor: "var(--slate-blue)",
+						color: "var(--white)",
+						border: `1px solid var(--slate-blue-light)`,
+						padding: "8px",
+						borderRadius: "5px",
+						fontSize: "12px",
+						boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+					}}
+				>
+					<strong>{name}</strong>
+					<br />
+					Range: {minValue} - {maxValue} µg/m³
+				</div>
+			);
+		}
+		return null;
+	};
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
@@ -92,9 +143,10 @@ export default function PMGauge({ value, type }: Props) {
 						stroke="none"
 					>
 						{data.map((entry, index) => (
-							<Cell key={`cell-${index}`} fill={entry.color} opacity="80%" />
+							<Cell key={`cell-${index}`} fill={entry.color} />
 						))}
 					</Pie>
+					<Tooltip content={customTooltip} />
 					{renderNeedle(value, data)}
 				</PieChart>
 			</div>
