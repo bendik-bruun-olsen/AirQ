@@ -1,3 +1,14 @@
 .button {
 	word-wrap: nowrap;
 }
+
+.buttonContainer {
+	display: flex;
+	justify-content: center;
+	margin-top: 5px;
+}
+
+.title {
+	font-weight: 600;
+	margin-bottom: 50px;
+}

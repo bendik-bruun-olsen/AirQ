@@ -61,11 +61,7 @@ function FetchMarkers() {
 					})}
 				>
 					<Popup>
-						<MapPopup
-							name={station.station.name}
-							aqi={station.aqi}
-							uid={station.uid}
-						/>
+						<MapPopup name={station.station.name} uid={station.uid} />
 					</Popup>
 				</Marker>
 			))}

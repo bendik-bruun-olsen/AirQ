@@ -7,11 +7,10 @@ import styles from "./MapPopup.module.css";
 
 interface Props {
 	name: string;
-	aqi: string;
 	uid: string;
 }
 
-export default function MapPopup({ name, aqi, uid }: Props) {
+export default function MapPopup({ name, uid }: Props) {
 	const { setSelectedLocation } = useContext(LocationContext);
 	const { data, isLoading, hasError } = useFetchData(uid);
 
@@ -54,11 +53,8 @@ export default function MapPopup({ name, aqi, uid }: Props) {
 
 	return (
 		<>
-			<strong>{name}</strong>
-			<br />
-			AQI: {aqi}
-			<br />
-			{renderButton()}
+			<span className={styles.title}>{name}</span>
+			<div className={styles.buttonContainer}>{renderButton()}</div>
 		</>
 	);
 }
