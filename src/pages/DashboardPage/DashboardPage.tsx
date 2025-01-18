@@ -7,7 +7,8 @@ import LoadingPage from "../LoadingPage/LoadingPage";
 import PMGauge from "../../components/PMGauge/PMGauge";
 import ForeCastGraph from "../../components/ForecastGraph/ForecastGraph";
 import HumidityChart from "../../components/HumidityChart/PieChart";
-import Summary from "../../components/Summary/Summary";
+import LocationSummary from "../../components/LocationSummary/LocationSummary";
+import AirQualitySummary from "../../components/AirQualitySummary/AirQualitySummary";
 
 export default function DashboardPage() {
 	const { selectedLocation } = useContext(LocationContext);
@@ -27,7 +28,10 @@ export default function DashboardPage() {
 					</h3>
 				</div> */}
 				<div className={styles.itemContainer}>
-					<Summary data={data} />
+					<LocationSummary data={data} />
+				</div>
+				<div className={styles.itemContainer}>
+					<AirQualitySummary aqiValue={data.aqi} />
 				</div>
 			</div>
 

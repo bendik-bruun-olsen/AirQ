@@ -36,8 +36,6 @@ interface CustomTooltipProps {
 	payload: TooltipPayload[];
 }
 
-// interface CustomTooltipProps extends TooltipProps<number, string> {}
-
 export default function PMGauge({ value, type }: Props) {
 	const data = type === "pm25" ? PM25Ranges : PM10Ranges;
 	const currentRange = data.find(
