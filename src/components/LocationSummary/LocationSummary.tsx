@@ -27,13 +27,14 @@ export default function LocationSummary({ data }: Props) {
 	return (
 		<div className={styles.wrapper}>
 			<h2>{data.city.name}</h2>
-			<span className={styles.aqiValue}>
-				Updated {findTimeSinceUpdate(data.time.iso)}
-			</span>
-
-			<div className={styles.textContainer}>
-				<h3>Temperature:</h3>
-				<span className={styles.aqiValue}>{data?.iaqi?.t?.v}℃</span>
+			<div className={styles.textWrapper}>
+				<span className={styles.value}>
+					Updated {findTimeSinceUpdate(data.time.iso)}
+				</span>
+				<div className={styles.textContainer}>
+					<h3>Temperature:</h3>
+					<span className={styles.value}>{data?.iaqi?.t?.v}℃</span>
+				</div>
 			</div>
 		</div>
 	);

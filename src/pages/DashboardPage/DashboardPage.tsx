@@ -1,6 +1,5 @@
 import { LocationContext } from "../../context/ContextProvider";
 import { useContext } from "react";
-// import { capitalizeWords } from "../../utils/helpers";
 import styles from "./DashboardPage.module.css";
 import useFetchData from "../../hooks/useFetchData";
 import LoadingPage from "../LoadingPage/LoadingPage";
@@ -20,13 +19,6 @@ export default function DashboardPage() {
 			<h1>Dashboard</h1>
 			<div className="divider" />
 			<div className={styles.wrapper}>
-				{/* <div className={styles.itemContainer}>
-					<h2>Location: {capitalizeWords(selectedLocation.name)}</h2>
-					<h3>
-						Current temp: {data?.iaqi?.t?.v ?? "Unknown"}
-						{data?.iaqi?.t?.v && "℃"}
-					</h3>
-				</div> */}
 				<div className={styles.itemContainer}>
 					<LocationSummary data={data} />
 				</div>

@@ -11,22 +11,26 @@ export default function AirQualitySummary({ aqiValue }: Props) {
 
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.textContainer}>
-				<h3>Overall Air Quality:</h3>
-				<span className={styles.aqiValue}>{status}</span>
+			<div className={styles.textWrapper}>
+				<div className={styles.textContainer}>
+					<h3>Overall Air Quality:</h3>
+					<span className={styles.aqiValue}>{status}</span>
+				</div>
+				<div className={styles.textContainer}>
+					<h3>AQI Value:</h3>
+					<span className={styles.aqiValue}>{aqiValue}</span>
+				</div>
 			</div>
-			<div className={styles.textContainer}>
-				<h3>AQI Value:</h3>
-				<span className={styles.aqiValue}>{aqiValue}</span>
+			<div className={styles.iconContainer}>
+				<FontAwesomeIcon
+					icon={icon}
+					style={{
+						width: "50px",
+						height: "50px",
+						color,
+					}}
+				/>
 			</div>
-			<FontAwesomeIcon
-				icon={icon}
-				style={{
-					width: "50px",
-					height: "50px",
-					color,
-				}}
-			/>
 		</div>
 	);
 }
