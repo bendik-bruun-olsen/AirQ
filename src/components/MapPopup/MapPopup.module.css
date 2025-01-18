@@ -1,7 +1,3 @@
-.button {
-	word-wrap: nowrap;
-}
-
 .buttonContainer {
 	display: flex;
 	justify-content: center;
