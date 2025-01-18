@@ -1,4 +1,4 @@
-import { Cell, Pie, PieChart, Tooltip } from "recharts";
+import { Cell, Pie, PieChart, Tooltip, TooltipProps } from "recharts";
 import {
 	PM10Ranges,
 	PM25Ranges,
@@ -9,31 +9,6 @@ import styles from "./PMGauge.module.css";
 interface Props {
 	value: number;
 	type: string;
-}
-
-interface TooltipPayload {
-	name: string;
-	value: number;
-	payload: {
-		name: string;
-		minValue: number;
-		maxValue: number;
-		color: string;
-		value: number;
-	};
-	dataKey: string;
-	stroke: string;
-	fill: string;
-	cx: number;
-	cy: number;
-	minValue: number;
-	maxValue: number;
-	color: string;
-}
-
-interface CustomTooltipProps {
-	active: boolean;
-	payload: TooltipPayload[];
 }
 
 export default function PMGauge({ value, type }: Props) {
@@ -91,7 +66,7 @@ export default function PMGauge({ value, type }: Props) {
 		);
 	};
 
-	const customTooltip = ({ active, payload }: CustomTooltipProps) => {
+	const customTooltip = ({ active, payload }: TooltipProps<number, string>) => {
 		if (active && payload && payload.length) {
 			const { name, minValue, maxValue } = payload[0].payload;
 			return (

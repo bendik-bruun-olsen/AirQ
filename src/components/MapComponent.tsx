@@ -6,7 +6,6 @@ import {
 	Marker,
 	Popup,
 	TileLayer,
-	useMap,
 	useMapEvents,
 } from "react-leaflet";
 import MapPopup from "./MapPopup/MapPopup";
