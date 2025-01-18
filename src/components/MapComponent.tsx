@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-
 import {
 	MapContainer,
 	Marker,
 	Popup,
 	TileLayer,
+	useMap,
 	useMapEvents,
 } from "react-leaflet";
 import MapPopup from "./MapPopup/MapPopup";
@@ -47,6 +47,10 @@ function FetchMarkers() {
 		}
 	};
 
+	useEffect(() => {
+		fetchMarkers(map.getBounds());
+	}, [map]);
+
 	return (
 		<>
 			{stations.map((station) => (
@@ -78,7 +82,7 @@ export default function MapComponent() {
 		<MapContainer
 			center={[58.9699756, 5.7331072]}
 			zoom={13}
-			style={{ height: "800px", width: "100%" }}
+			style={{ height: "600px", width: "100%" }}
 		>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
