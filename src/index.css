@@ -55,7 +55,7 @@ h4 {
 .divider {
 	margin-bottom: 10px;
 	background-color: var(--slate-blue-light);
-	height: 8px;
+	height: 3px;
 	width: 100%;
 	border-radius: 10px;
 }

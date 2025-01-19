@@ -23,7 +23,7 @@ interface IAQI {
 	w?: { v: number };
 }
 
-interface ForecastData {
+export interface ForecastData {
 	avg: number;
 	day: string;
 	max: number;

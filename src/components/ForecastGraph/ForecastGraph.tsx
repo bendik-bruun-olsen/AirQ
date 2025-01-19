@@ -4,8 +4,8 @@ import {
 	Select,
 	SelectChangeEvent,
 } from "@mui/material";
-import { Forecast } from "../../interfaces/APIResponse";
-import { useState } from "react";
+import { Forecast, ForecastData } from "../../interfaces/APIResponse";
+import { useEffect, useState } from "react";
 import styles from "./ForecastGraph.module.css";
 import {
 	Area,
@@ -22,14 +22,37 @@ interface Props {
 	forecast: Forecast;
 }
 
-export default function ForeCastGraph({ forecast }: Props) {
-	const [selection, setSelection] = useState<string>("o3");
-	const selectionIndex = Object.keys(forecast.daily).findIndex(
-		(key) => key === selection
-	);
-	const data = Object.values(forecast.daily);
+interface TypeMapInterface {
+	[key: string]: string;
+}
 
-	data.forEach((entry) => {
+const typeMap: TypeMapInterface = {
+	o3: "Ozon",
+	pm10: "Particulate Matter (10 microns)",
+	pm25: "Particulate Matter (2.5 microns)",
+	uvi: "UV Index",
+};
+
+export default function ForeCastGraph({ forecast }: Props) {
+	const [data, setData] = useState(forecast.daily);
+	useEffect(() => {
+		const updatedData = JSON.parse(JSON.stringify(forecast.daily));
+		for (const key in updatedData) {
+			const sum = updatedData[key].reduce(
+				(acc: number, reading: ForecastData) => acc + reading.avg,
+				0
+			);
+			if (sum === 0) delete updatedData[key];
+		}
+		setData(updatedData);
+	}, [forecast.daily]);
+
+	const dataKeys = Object.keys(data);
+	const [selection, setSelection] = useState<string>(dataKeys[0]);
+	const selectionIndex = dataKeys.findIndex((key) => key === selection);
+	const dataValues = Object.values(data);
+
+	dataValues.forEach((entry) => {
 		entry.forEach((item) => {
 			item.day = formatDate(item.day);
 		});
@@ -76,14 +99,11 @@ export default function ForeCastGraph({ forecast }: Props) {
 								},
 							}}
 						>
-							<MenuItem value={"o3"}>Ozon</MenuItem>
-							<MenuItem value={"pm10"}>
-								Particulate Matter (10 microns)
-							</MenuItem>
-							<MenuItem value={"pm25"}>
-								Particulate Matter (2.5 microns)
-							</MenuItem>
-							<MenuItem value={"uvi"}>UV Index</MenuItem>
+							{dataKeys.map((key) => (
+								<MenuItem key={key} value={key}>
+									{typeMap[key as keyof TypeMapInterface]}
+								</MenuItem>
+							))}
 						</Select>
 					</FormControl>
 				</div>
@@ -91,7 +111,7 @@ export default function ForeCastGraph({ forecast }: Props) {
 			<div className={styles.graphContainer}>
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart
-						data={data[selectionIndex]}
+						data={dataValues[selectionIndex]}
 						margin={{
 							top: 10,
 							right: 0,
