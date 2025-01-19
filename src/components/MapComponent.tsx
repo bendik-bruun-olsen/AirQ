@@ -45,7 +45,9 @@ function FetchMarkers() {
 	};
 
 	useEffect(() => {
-		fetchMarkers(map.getBounds());
+		if (map) {
+			fetchMarkers(map.getBounds());
+		}
 	}, [map]);
 
 	return (
@@ -69,10 +71,10 @@ function FetchMarkers() {
 	);
 }
 
-export default function MapComponent() {
+export default function MapComponent({ geo }: { geo: [number, number] }) {
 	return (
 		<MapContainer
-			center={[58.9699756, 5.7331072]}
+			center={geo}
 			zoom={13}
 			style={{ height: "600px", width: "100%" }}
 		>

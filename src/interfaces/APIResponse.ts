@@ -3,7 +3,7 @@ interface Attribution {
 	name: string;
 }
 
-interface City {
+export interface City {
 	geo: [number, number];
 	name: string;
 	url: string;
