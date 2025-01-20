@@ -18,7 +18,6 @@ export default function MapPopup({ name, uid }: Props) {
 
 	const handleClick = () => {
 		setSelectedLocation({
-			name: name,
 			uid: uid,
 		});
 		navigate("/dashboard");
