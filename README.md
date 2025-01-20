@@ -40,7 +40,7 @@ AirQ is an application that enables you to monitor and explore air quality data 
 
 ## How to Use
 
-Open [this link](air-q-nine.vercel.app/) in a modern web browser to access the website.
+Open [this link](https://air-q-nine.vercel.app/) in a modern web browser to access the website.
 
 ---
 
